@@ -15,11 +15,7 @@ def operation():
     operation = request_data['operation']
     GPIO.setmode(GPIO.BCM)
     if operation in operation_list:
-        for i in range(len(operation_list)):
-            if operation == operation_list[i]:
-                GPIO.setup(gpio_list[i],GPIO.OUT)
-                print(operation_list[i])
-                break
+        GPIO.setup(gpio_list[operation_list.index(operation)],GPIO.OUT)
         result = jsonify({'result': 'Operation Success'})
         GPIO.cleanup()
 
